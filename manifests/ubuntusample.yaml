@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ubuntu
+spec:
+  selector:
+    matchLabels:
+      run: my-ubuntu
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-ubuntu
+    spec:
+      containers:
+      - name: my-ubuntu
+        image: ubuntu:latest
+        ports:
+        - containerPort: 80
+        command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-ubuntu
+  labels:
+    run: my-ubuntu
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 30003
+    port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: my-ubuntu
+

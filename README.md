@@ -4,7 +4,7 @@ The below scripts are executed from GCP cloud shell terminal. If you wish to run
 1. gcloud
 2. terraform
 3. python 
-4. kubectl..and any necessary other dependencies
+4. kubectl..and any other necessary dependencies.
 Also, you will need to authenticate to your gcloud account and set your project config
 
 gke-cluster-create.sh - creates a kubernetes cluster using GKE
@@ -17,5 +17,4 @@ gke-cluster-delete.sh - deletes the cluster and the leftover resources not delet
 
 Dockerfile - this file has the base image for knoteapp frontend and NodeJs backend. MongoDB is used as the database for stoting the details
 
-tfscripts/ - this folder contains all the scripts that will bring up the GKE cluster. You can modify the variables.tf file to add values specific to your project.
-             account.json file has is the credentials file for service account being used. You will need to use your own json file.
+tfscripts/ - this folder contains all the scripts that will bring up the GKE cluster. You can modify the variables.tf file to add values specific to your project.account.json file is the credentials file for service account being used. You will need to use your own json file.
